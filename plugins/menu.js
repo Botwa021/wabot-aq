@@ -33,19 +33,14 @@ const defaultMenu = {
 ╭─「 %me 」
 │ Hai, %name!
 │
-│ Tersisa *%limit Limit*
-│ Role *%role*
-│ Level *%level (%exp / %maxexp)* [%xp4levelup lagi untuk levelup]
-│ %totalexp XP in Total
-│ 
-│ Tanggal: *%week %weton, %date*
-│ Tanggal Islam: *%dateIslamic*
-│ Waktu: *%time*
-│
-│ Uptime: *%uptime (%muptime)*
-│ Database: %rtotalreg of %totalreg
-│ Github:
-│ %github
+│ *Limit*: %limit
+│ *Role*: %role
+│ *Level*: %level
+│ *Exp*: %exp
+│ *Tanggal*: %week, %date
+│ *Waktu*: %time
+│ *Uptime*: %uptime
+│ *User*: %rtotalreg dari %totalreg
 ╰────
 %readmore`.trimStart(),
   header: '╭─「 %category 」',
@@ -152,7 +147,9 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
+await conn.fakeReply(m.chat, 'Loading...', '0@s.whatsapp.net', 'BY MURSID (+6288233832771)', 'status@broadcast')
     conn.reply(m.chat, text.trim(), m)
+    conn.sendFile(m.chat, './folder/suara.mp3.mp3', 'song.mp3, '', m, false, true { mimetype :' audio/mp4'})
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
