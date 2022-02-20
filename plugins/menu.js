@@ -30,17 +30,16 @@ let tags = {
 }
 const defaultMenu = {
   before: `
-╭─「 %me 」
+╭─「 Bot Wa 」
 │ Hai, %name!
 │
-│ *Limit*: %limit
-│ *Role*: %role
-│ *Level*: %level
-│ *Exp*: %exp
-│ *Tanggal*: %week, %date
-│ *Waktu*: %time
-│ *Uptime*: %uptime
-│ *User*: %rtotalreg dari %totalreg
+│ Limit : %limit
+│ Role : %role
+│ Exp : %exp
+│ Tanggal : %week, %date
+│ Waktu : %time
+│ Uptime : %uptime
+│ User : %rtotalreg of %totalreg
 ╰────
 %readmore`.trimStart(),
   header: '╭─「 %category 」',
@@ -147,9 +146,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-await conn.fakeReply(m.chat, 'Loading...', '0@s.whatsapp.net', 'BY MURSID (+6288233832771)', 'status@broadcast')
     conn.reply(m.chat, text.trim(), m)
-    conn.sendFile(m.chat, './folder/suara.mp3.mp3', 'song.mp3, '', m, false, true { mimetype :' audio/mp4'})
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
